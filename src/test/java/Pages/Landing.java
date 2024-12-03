@@ -23,34 +23,13 @@ public class Landing extends Base {
         clickRejectAll();
     }
 
-    public void choseOrigin(){}
+    public void completeTheForm() {
+        sendText(By.xpath("//input[@aria-label='Origen']"),"Buenos Aires (BUE)");
+        setAriaActiveDescendant(explicitWait(By.xpath("//input[@aria-label='Origen']"),10), "listbox-option-0");
+        sendText(By.xpath("//input[@aria-label='Destino']"),"Madrid (MAD)");
+        setAriaActiveDescendant(explicitWait(By.xpath("//input[@aria-label='Destino']"),10), "listbox-option-0");
+        lookForElement(By.xpath("//div[@class='d-zbtid6']")).submit();
 
-    public void choseeDestination(){    }
-
-    public WebElement lookForElement (By locator){
-        return this.driver.findElement(locator);
     }
-    public void click (By locator){
-        this.driver.findElement(locator).click();
-    }//Hace click en un elemento
-
-    public void click (WebElement element){
-        element.click();
-    }//Hace click en un elemento
-
-    public void watXMills(int mills) {
-        try {
-            Thread.sleep(mills);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public WebElement explWait (By locator, int seconds){
-        wait = new WebDriverWait(this.driver, Duration.ofSeconds(seconds));
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-    }
-
-
 
 }
