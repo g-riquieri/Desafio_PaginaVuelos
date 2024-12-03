@@ -100,7 +100,6 @@ public class Base {
     public void  sendText(By locator, String texto){
         this.driver.findElement(locator).sendKeys(texto);
     }
-
     public void setAriaActiveDescendant(By elementLocator, String newValue) {
         try {
             WebElement element = driver.findElement(elementLocator);
