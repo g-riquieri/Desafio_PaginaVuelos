@@ -123,4 +123,15 @@ public class Base {
             driver.quit();
         }
     }
+
+    // Función para cerrar completamente el navegador
+    public void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+            System.out.println("El navegador se ha cerrado completamente.");
+        } else {
+            System.out.println("No hay un navegador activo para cerrar.");
+        }
+    }
+
 }

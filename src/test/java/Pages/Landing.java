@@ -25,11 +25,18 @@ public class Landing extends Base {
 
     public void completeTheForm() {
         sendText(By.xpath("//input[@aria-label='Origen']"),"Buenos Aires (BUE)");
-        setAriaActiveDescendant(explicitWait(By.xpath("//input[@aria-label='Origen']"),10), "listbox-option-0");
+        waitXMills(1000);
+        click(By.xpath("//input[@aria-label='Origen']"));
         sendText(By.xpath("//input[@aria-label='Destino']"),"Madrid (MAD)");
-        setAriaActiveDescendant(explicitWait(By.xpath("//input[@aria-label='Destino']"),10), "listbox-option-0");
-        lookForElement(By.xpath("//div[@class='d-zbtid6']")).submit();
+        waitXMills(1000);
+        click(By.xpath("//input[@aria-label='Destino']"));
+        click(By.xpath("//div[@class='d-zbtid6']"));
 
+    }
+
+    public void goToCruises(){
+        click(By.xpath("//p[text()='Ver más']"));
+        click(By.xpath("//div[text()='Cruceros']"));
     }
 
 }
