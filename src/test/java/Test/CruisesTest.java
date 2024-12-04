@@ -35,7 +35,7 @@ public class CruisesTest {
 
     @AfterEach
     public void postConditions(){
-        landing.closeBrowser();
+        //landing.closeBrowser();
     }
 
 
