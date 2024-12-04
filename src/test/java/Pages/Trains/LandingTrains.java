@@ -38,8 +38,12 @@ public class LandingTrains extends Base {
         click(By.xpath("//button[@aria-label=\"Aumentar el número de adultos\"]"));
 
     }
-    ////div[@data-testid="v01-51567359"]
-    ////div[@data-testid="transportcard-way-0"]
+
+    public void elegirViaje(){
+
+        explicitWait(By.xpath("//div[@data-testid=\"v01-51567359\"//div[@data-testid=\"transportcard-way-0\"]]"), 10).click();
+    }
+
 
 
 
