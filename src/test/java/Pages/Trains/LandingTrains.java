@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public class LandingTrains extends Base {
 
-
     public LandingTrains(WebDriver driver) {
         super(driver);
     }
@@ -33,13 +32,14 @@ public class LandingTrains extends Base {
         click(By.xpath("//button[@aria-label=\"Buscar\"]"));
     }
 
-
     public void cantidadPersonas(){
         click(By.xpath("//span[@class=\"d-glv9jj\"]"));
 
         click(By.xpath("//button[@aria-label=\"Aumentar el número de adultos\"]"));
 
     }
+    ////div[@data-testid="v01-51567359"]
+    ////div[@data-testid="transportcard-way-0"]
 
 
 }
