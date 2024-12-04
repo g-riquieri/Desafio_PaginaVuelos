@@ -25,16 +25,16 @@ public class FlyList extends Base {
     //WebElement elMejor = explicitWait(By.xpath("//div[@data-testid='v01-772951052']"),10);
 
     public void btnMasBaratos() {
-        explicitWait(masBarato,10).click();
+        click(explicitWait(masBarato,10));
     }
 
     public void elegirVuelo() {
-        explicitWait(vueloElecto,10).click();
-        explicitWait(btnSelec,10).click();
+        click(explicitWait(vueloElecto,10));
+        click(explicitWait(btnSelec,10));
     }
 
     public void elegirPaquete() {
-        explicitWait(opcRecomendada,10).click();
+        click(explicitWait(opcRecomendada,10));
     }
 
     public void completarDatContac(String name, String surname, String email, String caraTel, String phone ) {
