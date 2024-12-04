@@ -48,9 +48,9 @@ public class Base {
         this.driver.get(url);
     }
 
-    public By explicitWait(By locator, int seg){
+    public WebElement explicitWait(By locator, int seg){
         wait = new WebDriverWait(this.driver,Duration.ofSeconds(seg));
-        return (By) wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     public void waitXMills(int mills) {
@@ -123,4 +123,15 @@ public class Base {
             driver.quit();
         }
     }
+
+    // Función para cerrar completamente el navegador
+    public void closeBrowser() {
+        if (driver != null) {
+            driver.quit();
+            System.out.println("El navegador se ha cerrado completamente.");
+        } else {
+            System.out.println("No hay un navegador activo para cerrar.");
+        }
+    }
+
 }

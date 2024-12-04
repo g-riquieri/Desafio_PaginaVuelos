@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 
-public class FlyTest {
+public class CruisesTest {
     private WebDriver driver;
     private WebDriverWait wait;
     private ArrayList<String> data;
@@ -27,9 +27,10 @@ public class FlyTest {
     }
 
     @Test
-    public void TC001(){
+    public void TC001_BusquedaSinUsuario(){
         landing.closeCookies();
-        landing.completeTheForm();
+        landing.goToCruises();
+
     }
 
     @AfterEach
