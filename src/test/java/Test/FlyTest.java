@@ -29,6 +29,7 @@ public class FlyTest {
     @Test
     public void TC001(){
         landing.closeCookies();
+        landing.completeTheForm();
     }
 
     @AfterEach
