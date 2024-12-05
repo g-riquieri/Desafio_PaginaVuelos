@@ -10,28 +10,50 @@ public class LandingTrains extends Base {
         super(driver);
     }
 
-    public void btn_soloIda() {
-
-        click(By.xpath("//button[@class=\"d-16g44dp\"]]"));
-    }
-    public void seleccionarOrigen(){
-       sendText(By.xpath("//input[@id=\":R5kd9dalamt2mm:\"]] "), "Madrid");
+    public void closeCookies(){
+        waitXMills(1000);
+        clickRejectAll();
     }
 
-    public void seleccionarDestino(){
+    public void compFormTren() {
+        waitXMills(3000);
+        //closeCookies();
+        click(explicitWait(By.xpath("//button[@class=\"d-16g44dp\"]"),20));
+        System.out.println("Se hizo click");
+        sendText(By.xpath("//input[@id=\":R5kd9dalamt2mm:\"] "), "Madrid");
+
         sendText(By.xpath("//input[@id=\":R6kd9dalamt2mm:\"] "),"Barcelona");
+        waitXMills(1000);
+        click(By.xpath("//input[@id=\":R6kd9dalamt2mm:\"]"));
+
+        click(By.xpath("//button[@aria-label=\"Buscar\"]"));
+
+    }
+    public void reservaSugePage(){
+        waitXMills(3000);
+        //closeCookies();
+        click(explicitWait(By.xpath("//button[@class=\"d-16g44dp\"]"),20));
+        System.out.println("Se hizo click");
+        click(By.xpath("//button[contains(text(),'Más sugerencias')]"));
+
+        waitXMills(1000);
+        click(By.xpath("//a[@href=https://www.rumbo.es/hoteles/es_espana/zaragoza-d1122136406']")); // and @title=\"Zaragoza\"]"));
+
+
     }
 
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------------
     public void cuando(){
         click(By.xpath("//span[@class=\"d-aziqil\"]"));
         //revisar que seleccione la fecha automaticamente desde la pagina
 
     }
-    public void btn_Buscar(){
-
-        click(By.xpath("//button[@aria-label=\"Buscar\"]"));
-    }
-
     public void cantidadPersonas(){
         click(By.xpath("//span[@class=\"d-glv9jj\"]"));
 
@@ -41,10 +63,13 @@ public class LandingTrains extends Base {
 
     public void elegirViaje(){
 
-        explicitWait(By.xpath("//div[@data-testid=\"v01-51567359\"//div[@data-testid=\"transportcard-way-0\"]]"), 10).click();
+        click(explicitWait(By.xpath("//div[@data-testid=\"v01-51567359\"//div[@data-testid=\"transportcard-way-0\"]]"), 10));
     }
 
+    public void detallesdelViaje(){
+        //Boton Seleccionar el paquete de viaje en resumen
+        click(By.xpath("//Button[contains(@class,'PriceBreakdownDetailsFooter__ButtonWrapper-cncr__sc-7yob6i-5')]"));
 
-
+    }
 
 }
