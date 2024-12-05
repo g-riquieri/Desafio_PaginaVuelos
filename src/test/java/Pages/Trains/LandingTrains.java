@@ -3,6 +3,8 @@ package Pages.Trains;
 import Utils.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LandingTrains extends Base {
 
@@ -29,15 +31,20 @@ public class LandingTrains extends Base {
         click(By.xpath("//button[@aria-label=\"Buscar\"]"));
 
     }
+    //------------------------------------------caso2--------------------------------------
     public void reservaSugePage(){
         waitXMills(3000);
         //closeCookies();
+
         click(explicitWait(By.xpath("//button[@class=\"d-16g44dp\"]"),20));
         System.out.println("Se hizo click");
-        click(By.xpath("//button[contains(text(),'Más sugerencias')]"));
-
         waitXMills(1000);
-        click(By.xpath("//a[@href=https://www.rumbo.es/hoteles/es_espana/zaragoza-d1122136406']")); // and @title=\"Zaragoza\"]"));
+        sendText(By.xpath("//input[@id=:R5kd9dalamt2mm:]"), "Madrid");
+        waitXMills(1000);
+        sendText(By.xpath("//input[@id=:R6kd9dalamt2mm]"),"Barcelona");
+        waitXMills(1000);
+
+
 
 
     }
