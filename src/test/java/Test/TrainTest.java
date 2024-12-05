@@ -1,6 +1,7 @@
 package Test;
 
 import Pages.Landing;
+import Pages.Trains.LandingTrains;
 import Utils.Base;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +18,7 @@ public class TrainTest {
     private ArrayList<String> data;
 
     private Landing landing;
+    private LandingTrains landingTrains;
 
     @BeforeEach
     public void setup() {
@@ -24,17 +26,38 @@ public class TrainTest {
         driver = Base.setupDriver(browser);
         landing = new Landing(driver);
         landing.loadPage("https://www.rumbo.es/");
+        landingTrains = new LandingTrains(driver);
     }
 
     @Test
     public void TC001(){
         landing.closeCookies();
+        landing.goToTrains();
+
+        landingTrains.compFormTren();
+
 
     }
 
     @AfterEach
     public void postConditions(){
-        landing.closeBrowser();
+        //landing.closeBrowser();
     }
+
+
+    @Test
+    public void TC002(){
+        landing.closeCookies();
+        landing.goToTrains();
+
+        landingTrains. reservaSugePage();
+
+
+    }
+
+
+
+
+
 
 }

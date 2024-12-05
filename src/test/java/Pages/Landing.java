@@ -33,6 +33,10 @@ public class Landing extends Base {
         click(By.xpath("//div[@class='d-zbtid6']"));
 
     }
+    public void goToTrains(){
+        click(By.xpath("//p[text()='Ver más']"));
+        click(By.xpath("//div[text()='Trenes']"));
+    }
 
     public void goToCruises(){
         click(By.xpath("//p[text()='Ver más']"));
