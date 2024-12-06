@@ -48,14 +48,21 @@ public class TrainTest {
     @Test
     public void TC002(){
         landing.closeCookies();
-        landing.goToTrains();
+        landing.goToTrainsH();
 
         landingTrains. reservaSugePage();
 
 
     }
 
+@Test
+    public void TC003(){
+    landing.closeCookies();
+    landing.goToTrains();
 
+    landingTrains.resViajeSS();
+
+}
 
 
 
