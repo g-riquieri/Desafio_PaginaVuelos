@@ -67,9 +67,9 @@ public class LandingTrains extends Base {
         waitXMills(3000);
 
         //sendText(By.xpath("//input[@data-testid=\"input-input\"]"), "Bruno");
-        sendText(By.xpath("//div[@data-testid='name']//span[contains(text(),'Nombre')]"),"Bruno");
+        sendText(By.xpath("//div[@data-testid='name']"),"Bruno");
         waitXMills(3000);
-        sendText(By.xpath("//div[@data-testid='surname']//span[contains(text(),'Apellido')]"),"Diaz");
+        sendText(By.xpath("//div[@data-testid='surname']"),"Diaz");
 
     }
 
