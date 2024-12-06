@@ -55,7 +55,14 @@ public class TrainTest {
 
     }
 
+@Test
+    public void TC003(){
+    landing.closeCookies();
+    landing.goToTrains();
 
+    landingTrains.resViajeSS();
+
+}
 
 
 
