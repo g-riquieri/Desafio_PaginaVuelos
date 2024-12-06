@@ -34,10 +34,11 @@ public class LandingTrains extends Base {
         //closeCookies();
         click(explicitWait(By.xpath("//button[@class=\"d-16g44dp\"]"),20));
         System.out.println("Se hizo click");
-        click(By.xpath("//button[contains(text(),'Más sugerencias')]"));
+        click(explicitWait(By.xpath("//button[contains(text(),'Más sugerencias')]"),10));
 
         waitXMills(1000);
-        click(By.xpath("//a[@href=https://www.rumbo.es/hoteles/es_espana/zaragoza-d1122136406']")); // and @title=\"Zaragoza\"]"));
+        click(explicitWait(By.xpath("//a[@href=https://www.rumbo.es/hoteles/es_espana/zaragoza-d1122136406']"),10)); //
+        // and @title=\"Zaragoza\"]"));
 
 
     }
