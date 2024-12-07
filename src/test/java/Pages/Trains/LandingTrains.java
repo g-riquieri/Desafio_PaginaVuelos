@@ -1,10 +1,14 @@
 package Pages.Trains;
 
 import Utils.Base;
+import io.opentelemetry.sdk.metrics.internal.view.ExplicitBucketHistogramAggregation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+
+import javax.swing.tree.ExpandVetoException;
 
 public class LandingTrains extends Base {
 
@@ -59,49 +63,76 @@ public class LandingTrains extends Base {
         click(By.xpath("//button[@aria-label=\"Buscar\"]"));
 
         //EL MEJOR
-        //click(By.xpath("//FullTransportSummary__SummaryColumn-sc-aaxr6w-0 gibWPP]"));
-        click(By.xpath("//button[@class=\"FullTransportPrices__SelectedPriceContainer-sc-1qck0l5-1 gMEljz\"]"));
+        //click(By.xpath("//button[@class=\"FullTransportPrices__SelectedPriceContainer-sc-1qck0l5-1 gMEljz\"]"));
+        click(By.xpath("(//span[text()='Precio por persona'])[1]"));
+
         waitXMills(3000);
         //Hace clic en Seleccionar Detalles del viaje ....
-        click(By.xpath("//button[@class=\"Button__LmnDsButton-sc-1bbve8d-0 bsmtZs\"]"));
+        click(By.xpath("(//button[text()='Seleccionar'])[1]"));
+
+        //click(By.xpath("//span[@data-testid='transportcard-final-price']"));
+        //click(By.xpath("//button[@class=\"Button__LmnDsButton-sc-1bbve8d-0 bsmtZs\"]"));
         waitXMills(3000);
 
-        //sendText(By.xpath("//input[@data-testid=\"input-input\"]"), "Bruno");
-        sendText(By.xpath("//div[@data-testid='name']//span[contains(text(),'Nombre')]"),"Bruno");
+
+        sendText(By.xpath("//input[@name='name']"),"Bruno");
         waitXMills(3000);
-        sendText(By.xpath("//div[@data-testid='surname']//span[contains(text(),'Apellido')]"),"Diaz");
+        sendText(By.xpath("//input[@name='surname']"),"Diaz");
+        waitXMills(3000);
+
+        sendText(By.xpath("//input[@name='email']"), "Brunodiaznoesbatman@gmail.com");
+        waitXMills(3000);
+
+        sendText(By.xpath("//input[@name='phone']"), "12223654");
+        // no carga la caracteristica del pais del telefono..... REVISAR
+
+        //Seleccionar si es Sr o Sra
+        click(By.xpath("(//*[@data-testid=\"radio-input\"])[1]"));
+
+        //Seleccion del dia
+        click(By.xpath("//div[@class='widget-wrapper widget-wrapper--traveller_info ']//section[1]//label[.='Día']"));
+        sendText(By.xpath("//div[@class='widget-wrapper widget-wrapper--traveller_info ']//section[1]//label[.='Día']"), "26");
+        waitXMills(3000);
+
+        //Seleccion del mes
+
+        //click(By.xpath("//span[contains(.,'Mes')]"));
+        click(By.xpath("(//span[contains(.,'Mes')])[1]"));
+        //click(By.xpath("//button[@data-testid=groups.1.travellers.1.dateOfBirth_month]"));
+        //click(By.xpath("(//span[text()='Mes'])[1]"));
+        waitXMills(1000);
+        sendText(By.xpath("(//span[contains(.,'Mes')])[1]"), "marzo");
+        waitXMills(3000);
+
+        click(By.xpath("//span[contains(.,'Año')]"));
+        sendText(By.xpath("click(By.xpath(\"//span[contains(.,'Año')]\"));"), "1995");
+
+        //Seleccionar DNI
+        click(By.xpath("//button[@data-testid=\"groups.1.travellers.1.documentType\"]"));
+        click(By.xpath("//span[.='DNI']\n"));
+
+    }
+
+
+    public void viajeMasRapido(){
+
+
+        waitXMills(3000);
+        closeCookies();
+
+        sendText(By.xpath("//input[@id=\":R5kd9dalamt2mm:\"] "), "Madrid");
+        waitXMills(1000);
+        sendText(By.xpath("//input[@id=\":R6kd9dalamt2mm:\"] "), "Barcelona");
+        waitXMills(1000);
+        click(By.xpath("//button[@aria-label=\"Buscar\"]"));
+
+        click(By.xpath("//button[@class='Tabs__ListElement-sc-1ccox8g-5 gEieye'])"));
+        click(By.xpath("//h5[.='Más rápido'])"));
+
+
 
     }
 
 
 
-
-
-
-
 }
-    //------------------------------------------------------------------------------------------------------
-  //  public void cuando(){
-        //click(By.xpath("//span[@class=\"d-aziqil\"]"));
-        //revisar que seleccione la fecha automaticamente desde la pagina
-
-   // }
-    //public void cantidadPersonas(){
-        //click(By.xpath("//span[@class=\"d-glv9jj\"]"));
-
-        //click(By.xpath("//button[@aria-label=\"Aumentar el número de adultos\"]"));
-
-    //}
-
-    //public void elegirViaje(){
-
-        //click(explicitWait(By.xpath("//div[@data-testid=\"v01-51567359\"//div[@data-testid=\"transportcard-way-0\"]]"), 10));
-    //}
-
-    //public void detallesdelViaje(){
-        //Boton Seleccionar el paquete de viaje en resumen
-       // click(By.xpath("//Button[contains(@class,'PriceBreakdownDetailsFooter__ButtonWrapper-cncr__sc-7yob6i-5')]"));
-
-    //}
-
-//}

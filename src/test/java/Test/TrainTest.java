@@ -55,7 +55,7 @@ public class TrainTest {
 
     }
 
-@Test
+    @Test
     public void TC003(){
     landing.closeCookies();
     landing.goToTrains();
@@ -64,7 +64,16 @@ public class TrainTest {
 
 }
 
+    @Test
+    public void TC004(){
+        landing.closeCookies();
+        landing.goToTrains();
 
+        landingTrains.viajeMasRapido();
+
+
+
+    }
 
 
 }
