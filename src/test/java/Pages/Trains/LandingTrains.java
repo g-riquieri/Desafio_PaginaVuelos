@@ -106,7 +106,6 @@ public class LandingTrains extends Base {
 
         click(By.xpath("//span[contains(.,'Año')]"));
         sendText(By.xpath("click(By.xpath(\"//span[contains(.,'Año')]\"));"), "1995");
-
         //Seleccionar DNI
         click(By.xpath("//button[@data-testid=\"groups.1.travellers.1.documentType\"]"));
         click(By.xpath("//span[.='DNI']\n"));
