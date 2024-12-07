@@ -1,5 +1,6 @@
 package Test;
 
+import Pages.Flays.FlyList;
 import Pages.Landing;
 import Utils.Base;
 import org.junit.jupiter.api.AfterEach;
@@ -17,6 +18,7 @@ public class FlyTest {
 
     //pages
     private Landing landing;
+    private FlyList flyList;
 
     @BeforeEach
     public void setup() {
@@ -24,6 +26,7 @@ public class FlyTest {
         driver = Base.setupDriver(browser);
         landing = new Landing(driver);
         landing.loadPage("https://www.rumbo.es/");
+        flyList = new FlyList(driver);
     }
 
     @Test
@@ -32,7 +35,19 @@ public class FlyTest {
         landing.completeTheForm();
     }
 
-    @AfterEach
+    @Test
+    public void TC002(){
+        landing.closeCookies();
+        landing.completeTheForm();
+
+        flyList.btnMasBaratos();
+        flyList.elegirVuelo();
+        //flyList.elegirPaquete();
+        //flyList.completarDatContac("Fran","Martinez","prueba@prueba.com");
+    }
+
+
+    //@AfterEach
     public void postConditions(){
         landing.closeBrowser();
     }
