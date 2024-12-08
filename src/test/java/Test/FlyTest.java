@@ -1,15 +1,14 @@
 package Test;
 
+import Pages.Flays.ChooseHotel;
 import Pages.Flays.FlyList;
 import Pages.Flays.HotelList;
 import Pages.Landing;
 import Utils.Base;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.WebDriverException;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -23,6 +22,7 @@ public class FlyTest {
     private Landing landing;
     private FlyList flyList;
     private HotelList hotelList;
+    private ChooseHotel chooseHotel;
 
     @BeforeEach
     public void setup() {
@@ -32,14 +32,14 @@ public class FlyTest {
         landing.loadPage("https://www.rumbo.es/");
         flyList = new FlyList(driver);
         hotelList = new HotelList(driver);
-        hotelList.loadPage("https://www.rumbo.es/s/hdp/search?origin=MAD&destination=A&datefrom=A&dateto=T,4,6&adults=2&sort=recommended&search_mode=DP&int_type=CMS_DP&int_campaign=RR&int_detail=MHP_RMB_third_inspire_couple&search_id=x1733601150480598b");
+        chooseHotel = new ChooseHotel(driver);
 
     }
 
     @Test
     public void TC001(){
         landing.closeCookies();
-        landing.completeTheForm();
+        landing.btnBuscar();
         flyList.btnMasBaratos();
         flyList.elegirVuelo();
     }
@@ -48,16 +48,38 @@ public class FlyTest {
     public void TC002(){
         landing.closeCookies();
         landing.banEnPareja();
-        Set<String> windowHandles = driver.getWindowHandles(); //Obten la ventanas  abiertas ahora
-        String originalWindow = driver.getWindowHandle();
-        for (String handle : windowHandles) { //Cambia de ventanas
+        String originalWindow = driver.getWindowHandle(); // Guarda la ventana original
+        Set<String> windowHandles = driver.getWindowHandles(); // Obtén todos los handles de las ventanas
+        String firstWindow = null;  // Cambia al handle de la primera ventana emergente (if incluido)
+        for (String handle : windowHandles) {
             if (!handle.equals(originalWindow)) {
-                driver.switchTo().window(handle);
+                firstWindow = handle;
                 break;
             }
         }
+        assert firstWindow != null;
+        driver.switchTo().window(firstWindow); // Cambia a la primera ventana emergente
         hotelList.closeCookies();
         hotelList.elegirHotel();
+        Set<String> updatedWindowHandles = driver.getWindowHandles(); // Obtén nuevamente los handles de ventanas
+        String secondWindow = null;
+        for (String handle : updatedWindowHandles) {
+            if (!handle.equals(originalWindow) && !handle.equals(firstWindow)) {
+                secondWindow = handle;
+                break;
+            }
+        }
+        assert secondWindow != null;
+        driver.switchTo().window(secondWindow); // Cambia a la segunda ventana emergente
+        chooseHotel.elegirOpcHotel();
+    }
+
+    @Test
+    public void TC003() {
+        landing.closeCookies();
+        landing.completeTheForm();
+        flyList.btnMasBaratos();
+        flyList.elegirVuelo();
     }
 
 

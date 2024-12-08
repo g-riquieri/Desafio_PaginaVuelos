@@ -34,6 +34,12 @@ public class Landing extends Base {
         sendText(By.xpath("//input[@aria-label='Destino']"),"Madrid (MAD)");
         waitXMills(1000);
         click(By.xpath("//input[@aria-label='Destino']"));
+
+        //elegir fecha, cant pasajeros y clase de vuelo
+        click(By.xpath("//button[@aria-label='Buscar']"));
+    }
+
+    public void btnBuscar() {
         click(By.xpath("//button[@aria-label='Buscar']"));
     }
 
